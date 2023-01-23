@@ -5,13 +5,8 @@ class ProductManager {
   }
 
   addProduct({ title, description, code, price, thumbnail, stock }) {
-    if (!title || !description || !code || !price || !thumbnail || !stock) {
-      console.log("Faltan datos");
-    } else if (this.products.find((product) => product.code === code)) {
-      console.log("El producto ya existe");
-    } else {
-      this.products.push({id: ProductManager.id++, title, description, code, price, thumbnail, stock});
-      console.log("Producto agregado")
+    if (this.#checkparams({ title, description, code, price, thumbnail, stock })) {
+      this.products.push({ id: ProductManager.id++, title, description, code, price, thumbnail, stock });
     }
   }
 
@@ -20,7 +15,21 @@ class ProductManager {
   }
 
   getProductById(id) {
-    return this.products.find(product => product.id === id? product : console.log("Not found"));
+    const errorLocal = new Error("Not found");
+    return this.products.find(product => product.id === id? product : console.log(errorLocal));
+  }
+
+
+  #checkparams({ title, description, code, price, thumbnail, stock }) {
+    const err = new Error("Faltan datos");
+    const errorLocal = new Error("El producto ya existe");
+    if (!title || !description || !code || !price || !thumbnail || !stock) {
+      console.log(err);
+    } else if (this.products.find((product) => product.code === code)) {
+      console.log(errorLocal);
+    } else {
+      return true;
+    }
   }
 
 }
