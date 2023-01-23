@@ -36,19 +36,19 @@ class ProductManager {
 
 // se creará una instancia de la clase ProductManager
 const productManager = new ProductManager();
-const product1 = { title: "producto prueba", description: "Este es un producto prueba", code: "abc123", price: 200, thumbnail: "sin imagen", stock: 25}
-const product2 = { title: "producto prueba", description: "Este es un producto prueba", code: "abc123", price: 200, thumbnail: "sin imagen", stock: 25}
 
 //se llamará "getProducts" para obtener el array de productos vacio
 console.log(productManager.getProducts());
 
 //se llamará "addProduct" para agregar un producto
+const product1 = { title: "producto prueba", description: "Este es un producto prueba", code: "abc123", price: 200, thumbnail: "sin imagen", stock: 25}
 productManager.addProduct(product1);
 
 //se llamará "getProducts" para obtener el array de productos con el producto agregado
 console.log(productManager.getProducts());
 
 //se llamará "addProduct" para agregar un producto con el mismo código arrojando un error
+const product2 = { title: "producto prueba", description: "Este es un producto prueba", code: "abc123", price: 200, thumbnail: "sin imagen", stock: 25}
 productManager.addProduct(product2);
 
 //se llamará "getProductById" para obtener el producto con id 1
