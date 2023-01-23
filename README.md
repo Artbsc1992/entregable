@@ -27,7 +27,7 @@
 ## Inicialización:
 1. Clonar el repositorio
   ````
-    $ git clone https://github.com/Artbsc1992/entregable1
+    $ git clone https://github.com/Artbsc1992/entregable1.git
   ````
 2. Acceder a la carpeta del projecto
 ````
