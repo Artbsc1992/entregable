@@ -1,0 +1,22 @@
+{
+  "name": "entregable1",
+  "version": "1.0.0",
+  "description": "- Realizar una clase ``\"ProductManager\"`` que gestione un conjunto de productos.\r  - Debe crearse desde su contructor con el elemento products, el cual será un arreglo vacío.\r  - cada productor que gestione debe contar con las propiedades:\r     - title (nombre de producto).\r     - description (descripción del producto).\r     - price (precio).\r     - thumbnail (ruta de imagen).\r     - code (código identificador).\r     - stock (número de piezas disponibles).",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Artbsc1992/entregable1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Artbsc1992/entregable1/issues"
+  },
+  "homepage": "https://github.com/Artbsc1992/entregable1#readme"
+}
