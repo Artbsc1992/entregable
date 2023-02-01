@@ -18,7 +18,7 @@ export default class ProductManager {
       console.log('Product added')
     }
     } catch (error) {
-      console.log(error);
+      return error;
     }
 
   }
@@ -27,7 +27,6 @@ export default class ProductManager {
     try {
       const existFile = await this.#checkDB();
       if(existFile){
-        console.log('Reading file...')
         const data = await fs.readFile(this.path, 'utf-8');
         return JSON.parse(data);
       } else {
@@ -38,18 +37,52 @@ export default class ProductManager {
       const data = await fs.readFile(this.path, 'utf-8');
       return JSON.parse(data);
     } catch (error) {
+      return error;
+    }
+  }
+
+  async getProductById(id) {
+    try {
+      const products = await this.getProducts();
+      const product = products.find(product => product.id === id);
+      if (!product) {
+        throw new Error("Product not found");
+      }
+      return product;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async updateProduct(id, product) {
+    try {
+      const products = await this.getProducts();
+      const productIndex = products.findIndex(product => product.id === id);
+      products[productIndex] = { id, ...product };
+      fs.writeFile(this.path, JSON.stringify(products), 'utf-8');
+      console.log('Product updated');
+    } catch (error) {
+      return error;
+    }
+    
+      
+  }
+
+  async deleteProduct(id) {
+    try{
+      if(!id){
+        throw new Error('Missing id')
+      }
+      const products = await this.getProducts(); 
+      const filteredProducts = products.filter(product => product.id !== id);
+      fs.writeFile(this.path, JSON.stringify(filteredProducts), 'utf-8');
+      console.log('Product deleted');
+    } catch(error){
       console.log(error);
       return error;
     }
   }
 
-  getProductById(id) {
-    const errorLocal = new Error("Not found");
-    return this.products.find(product => product.id === id? product : console.log(errorLocal));
-  }
-
-
-  
 
   async #checkDB() {
     try {

@@ -20,23 +20,29 @@ const manager = async () => {
     //se llamará "addProduct" para agregar un producto
     const product1 = { title: "producto prueba", description: "Este es un producto prueba", code: "abc123", price: 200, thumbnail: "sin imagen", stock: 25}
     await productManager.addProduct(product1);
+
+    //se llamará "getProducts" para obtener el array de productos con el producto agregado
+    const productsList2 = await productManager.getProducts();
+    console.log(productsList2)
+
+    //se llamará "getProductById" para obtener el producto con id 2 arrojando un error
+    const productById = await productManager.getProductById(2);
+    console.log(productById);
+
+    //se llamará "updateProduct" para actualizar el producto con id 1
+    const productUpdate = { title: "producto prueba actualizado", description: "Este es un producto prueba actualizado", code: "abc123", price: 200, thumbnail: "sin imagen", stock: 25}
+    await productManager.updateProduct(1, productUpdate);
+    const productsList3 = await productManager.getProducts();
+    console.log(productsList3)
+
+    //se llamará "deleteProduct" para eliminar el producto con id 1
+    await productManager.deleteProduct(1);
+    const productsList4 = await productManager.getProducts();
+    console.log(productsList4)
   } catch (error) {
     console.log(error)
   }
 }
 
 manager();
-// //se llamará "addProduct" para agregar un producto
-// const product1 = { title: "producto prueba", description: "Este es un producto prueba", code: "abc123", price: 200, thumbnail: "sin imagen", stock: 25}
-// productManager.addProduct(product1);
 
-// //se llamará "getProducts" para obtener el array de productos con el producto agregado
-// console.log(productManager.getProducts());
-
-// //se llamará "addProduct" para agregar un producto con el mismo código arrojando un error
-// const product2 = { title: "producto prueba", description: "Este es un producto prueba", code: "abc123", price: 200, thumbnail: "sin imagen", stock: 25}
-// productManager.addProduct(product2);
-
-// //se llamará "getProductById" para obtener el producto con id 1
-// console.log(productManager.getProductById(1));
-// console.log(productManager.getProductById(2)); // arrojara un error al no encontrar el producto
