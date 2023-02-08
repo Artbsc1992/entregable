@@ -45,9 +45,6 @@ export default class ProductManager {
     try {
       const products = await this.getProducts();
       const product = products.find(product => product.id === id);
-      if (!product) {
-        throw new Error("Product not found");
-      }
       return product;
     } catch (error) {
       return error;
@@ -64,8 +61,6 @@ export default class ProductManager {
     } catch (error) {
       return error;
     }
-    
-      
   }
 
   async deleteProduct(id) {
@@ -107,4 +102,3 @@ export default class ProductManager {
     return true;
   }
 }
-
